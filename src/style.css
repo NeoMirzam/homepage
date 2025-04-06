@@ -1340,8 +1340,19 @@ section {
 /* Blog Section
 ---------------------------------------------- */
 .blog-section {
-  background-color: var(--light-gray);
+  background-color: var(--primary-color);
   padding: var(--section-spacing) 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--secondary-color);
+}
+
+.blog-section .section-subtitle {
+  color: var(--accent-color);
+}
+
+.blog-section .section-title {
+  color: var(--secondary-color);
 }
 
 .blog-grid {
@@ -1353,17 +1364,19 @@ section {
 }
 
 .blog-item {
-  background-color: var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.05);
   border: none;
   border-radius: 8px;
   overflow: hidden;
   transition: var(--transition);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
 }
 
 .blog-item:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .blog-image {
@@ -1381,10 +1394,12 @@ section {
   height: 100%;
   object-fit: cover;
   transition: var(--transition);
+  filter: grayscale(20%);
 }
 
 .blog-item:hover .blog-image img {
   transform: scale(1.05);
+  filter: grayscale(0%);
 }
 
 .blog-content {
@@ -1399,7 +1414,7 @@ section {
 }
 
 .blog-title a {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   transition: var(--transition);
 }
 
@@ -1411,9 +1426,8 @@ section {
   display: flex;
   flex-wrap: wrap;
   font-size: 1.3rem;
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1.2rem;
-  opacity: 0.8;
 }
 
 .blog-meta span {
@@ -1423,15 +1437,14 @@ section {
 .blog-excerpt {
   font-size: 1.4rem;
   margin-bottom: 1.5rem;
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
-  opacity: 0.9;
 }
 
 .blog-read-more {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--accent-color);
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
@@ -1455,7 +1468,7 @@ section {
 }
 
 .blog-read-more:hover {
-  color: var(--accent-color);
+  color: var(--secondary-color);
 }
 
 /* Responsive adjustments for blog grid */
@@ -1463,6 +1476,7 @@ section {
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
+    gap: 2rem;
   }
 }
 
@@ -1470,6 +1484,7 @@ section {
   .blog-grid {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, auto);
+    gap: 1.5rem;
   }
   
   .blog-content {
