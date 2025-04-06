@@ -536,7 +536,7 @@ section {
 /* Hero Scroll Indicator */
 .hero-scroll {
   position: absolute;
-  bottom: 10px;
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1238,6 +1238,8 @@ section {
 .contact-section {
   background-color: var(--primary-color);
   padding: var(--section-spacing) 0;
+  position: relative;
+  overflow: hidden;
   color: var(--secondary-color);
 }
 
@@ -1866,4 +1868,20 @@ section {
 
 .slide-up.active {
   animation: slideUp 0.8s ease forwards;
+}
+
+/* Add canvas styling for all particle canvases */
+#particle-canvas, #profile-particle-canvas, #contact-particle-canvas, #blog-particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Make sure content is above the canvas */
+.contact-section .container, .blog-section .container {
+  position: relative;
+  z-index: 2;
 }

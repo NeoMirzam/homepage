@@ -19,8 +19,12 @@
   const skillLevels = document.querySelectorAll(".skill-level");
   const particleCanvas = document.getElementById("particle-canvas");
   const profileParticleCanvas = document.getElementById("profile-particle-canvas");
+  const contactParticleCanvas = document.getElementById("contact-particle-canvas");
+  const blogParticleCanvas = document.getElementById("blog-particle-canvas");
   const heroSection = document.querySelector(".hero-section");
   const profileSection = document.querySelector(".profile-section");
+  const contactSection = document.querySelector(".contact-section");
+  const blogSection = document.querySelector(".blog-section");
   const heroScroll = document.querySelector(".hero-scroll");
   const profileSkillLevels = document.querySelectorAll(".profile-skill-item .skill-level");
 
@@ -71,6 +75,18 @@
     if (profileParticleCanvas) {
       initParticles(profileParticleCanvas, profileSection, 80, ["#333333", "#444444", "#555555"]);
       animateParticles(profileParticleCanvas);
+    }
+    
+    // Initialize particle effect for contact section
+    if (contactParticleCanvas) {
+      initParticles(contactParticleCanvas, contactSection, 80, ["#333333", "#444444", "#555555"]);
+      animateParticles(contactParticleCanvas);
+    }
+    
+    // Initialize particle effect for blog section
+    if (blogParticleCanvas) {
+      initParticles(blogParticleCanvas, blogSection, 80, ["#333333", "#444444", "#555555"]);
+      animateParticles(blogParticleCanvas);
     }
 
     // Initialize skill bars animation for hero section
