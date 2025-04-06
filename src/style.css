@@ -107,6 +107,11 @@ ol {
 
 /* Layout & Containers
 ---------------------------------------------- */
+/* トップバーを非表示にする */
+.top-bar {
+  display: none !important;
+}
+
 .container {
   width: 100%;
   max-width: var(--container-width);
