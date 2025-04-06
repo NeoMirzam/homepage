@@ -399,6 +399,25 @@ section {
   padding: 0 20px;
 }
 
+/* ヘッダーとのはみ出し問題対応 - モバイル表示用の調整追加 */
+@media screen and (max-width: 768px) {
+  .hero-content {
+    padding-top: 80px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hero-content {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-content {
+    padding-top: 60px;
+  }
+}
+
 .typewriter-container {
   text-align: center;
   margin-bottom: 50px;
@@ -622,6 +641,19 @@ section {
   
   .skill-grid {
     gap: 10px 15px;
+  }
+  
+  /* DevToolsセクションの表示問題解決 - 確実に表示されるよう調整 */
+  .skill-infographic {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .skill-category {
+    width: 100%;
+    margin-bottom: 15px;
+    display: block;
   }
   
   /* Enhanced profile section responsive */
@@ -1510,6 +1542,47 @@ section {
   .contact-icon {
     margin-bottom: 0;
     margin-right: 2rem;
+  }
+}
+
+/* コンタクトカードの統一レイアウト調整 - 均等に配置 */
+@media screen and (max-width: 576px) {
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contact-card {
+    width: 100%;
+    height: auto;
+  }
+  
+  .contact-card a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    padding: 2rem 1.5rem;
+    height: auto;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  
+  .contact-icon {
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  
+  .contact-title {
+    margin-bottom: 0.5rem;
   }
 }
 
