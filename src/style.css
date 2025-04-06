@@ -1291,14 +1291,16 @@ section {
   .contact-card {
     width: 100%;
     height: auto;
+    /* カード自体はページ中央に配置 */
+    margin: 0 auto;
   }
   
   .contact-card a {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row; /* 横並びに変更 */
+    justify-content: flex-start; /* 左から配置開始 */
     align-items: center;
-    text-align: center;
+    text-align: left; /* テキスト全体は左揃え */
     padding: 2rem 1.5rem;
     height: auto;
   }
@@ -1308,18 +1310,23 @@ section {
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; /* 左揃え */
+    text-align: left; /* テキストは左揃え */
   }
   
   .contact-icon {
-    margin-right: 0;
-    margin-bottom: 1.5rem;
+    margin-right: 1.5rem; /* アイコンの右側に余白を追加 */
+    margin-bottom: 0; /* 下側の余白を削除 */
     flex-shrink: 0;
   }
   
   .contact-title {
     margin-bottom: 0.5rem;
+    text-align: left; /* タイトルは左揃え */
+  }
+  
+  .contact-detail {
+    text-align: left; /* 詳細情報も左揃え */
   }
 }
 
