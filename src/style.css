@@ -159,6 +159,40 @@ section {
   text-align: center !important;
 }
 
+/* Header Styles
+---------------------------------------------- */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 2rem 0;
+  background-color: var(--primary-color); /* 黒背景 */
+  color: var(--secondary-color); /* 白文字 */
+}
+
+.logo a {
+  color: var(--secondary-color) !important; /* 強制的に白文字 */
+  transition: var(--transition);
+}
+
+.logo-text {
+  color: var(--secondary-color) !important; /* 強制的に白文字 */
+  font-family: var(--heading-font);
+  font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  .site-header {
+    background-color: var(--primary-color) !important; /* モバイルでも確実に黒背景 */
+  }
+  
+  .logo a, .logo-text {
+    color: var(--secondary-color) !important; /* モバイルでも確実に白文字 */
+  }
+}
+
 /* Hero Section
 ---------------------------------------------- */
 .hero-section {
