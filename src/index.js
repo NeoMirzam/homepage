@@ -28,6 +28,9 @@
   const heroScroll = document.querySelector(".hero-scroll");
   const profileSkillLevels = document.querySelectorAll(".profile-skill-item .skill-level");
 
+  // Flag for mobile detection
+  const isMobile = window.innerWidth < 768;
+
   // Typewriter effect variables
   const textArray = [
     "Frontend Development",
@@ -51,6 +54,7 @@
   function init() {
     // Event Listeners
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     if (topBarToggle) {
       topBarToggle.addEventListener("click", toggleTopBar);
@@ -67,25 +71,25 @@
 
     // Initialize particle effect for hero section
     if (particleCanvas) {
-      initParticles(particleCanvas, heroSection);
+      initParticles(particleCanvas, heroSection, isMobile ? 50 : 100);
       animateParticles(particleCanvas);
     }
     
     // Initialize particle effect for profile section
     if (profileParticleCanvas) {
-      initParticles(profileParticleCanvas, profileSection, 80, ["#333333", "#444444", "#555555"]);
+      initParticles(profileParticleCanvas, profileSection, isMobile ? 40 : 80, ["#333333", "#444444", "#555555"]);
       animateParticles(profileParticleCanvas);
     }
     
     // Initialize particle effect for contact section
     if (contactParticleCanvas) {
-      initParticles(contactParticleCanvas, contactSection, 80, ["#333333", "#444444", "#555555"]);
+      initParticles(contactParticleCanvas, contactSection, isMobile ? 40 : 80, ["#333333", "#444444", "#555555"]);
       animateParticles(contactParticleCanvas);
     }
     
     // Initialize particle effect for blog section
     if (blogParticleCanvas) {
-      initParticles(blogParticleCanvas, blogSection, 80, ["#333333", "#444444", "#555555"]);
+      initParticles(blogParticleCanvas, blogSection, isMobile ? 40 : 80, ["#333333", "#444444", "#555555"]);
       animateParticles(blogParticleCanvas);
     }
 
@@ -123,6 +127,11 @@
     animateOnScroll();
     checkSkillBarsVisibility(skillLevels);
     checkSkillBarsVisibility(profileSkillLevels);
+    
+    // Add touch events for better mobile interaction
+    if ('ontouchstart' in window) {
+      addTouchInteractions();
+    }
   }
 
   // Handle sticky header on scroll
@@ -189,13 +198,54 @@
     }
   }
 
+  // Handle window resize
+  function handleResize() {
+    const wasMobile = isMobile;
+    const newIsMobile = window.innerWidth < 768;
+    
+    // Only reinitialize particles if mobile status changed
+    if (wasMobile !== newIsMobile) {
+      // Reinitialize particles with appropriate count
+      if (particleCanvas) {
+        initParticles(particleCanvas, heroSection, newIsMobile ? 50 : 100);
+      }
+      
+      if (profileParticleCanvas) {
+        initParticles(profileParticleCanvas, profileSection, newIsMobile ? 40 : 80, ["#333333", "#444444", "#555555"]);
+      }
+      
+      if (contactParticleCanvas) {
+        initParticles(contactParticleCanvas, contactSection, newIsMobile ? 40 : 80, ["#333333", "#444444", "#555555"]);
+      }
+      
+      if (blogParticleCanvas) {
+        initParticles(blogParticleCanvas, blogSection, newIsMobile ? 40 : 80, ["#333333", "#444444", "#555555"]);
+      }
+    }
+  }
+  
+  // Add touch interactions for mobile
+  function addTouchInteractions() {
+    const interactiveElements = document.querySelectorAll('.skill-category, .profile-info-item, .certificate-item, .blog-item, .contact-card');
+    
+    interactiveElements.forEach(element => {
+      element.addEventListener('touchstart', () => {
+        element.classList.add('touch-active');
+      }, { passive: true });
+      
+      element.addEventListener('touchend', () => {
+        element.classList.remove('touch-active');
+      }, { passive: true });
+    });
+  }
+
   // Initialize particle effect
   function initParticles(canvas, section, count = 100, colors = ["#ffffff", "#f5f5f5", "#e0e0e0"]) {
     const context = canvas.getContext("2d");
     const particles = [];
     const particleCount = count;
     const particleColors = colors;
-    const connectionDistance = 150;
+    const connectionDistance = isMobile ? 100 : 150; // 接続距離をモバイルで短くする
     const mousePosition = { x: null, y: null };
     
     // Set canvas size
@@ -209,10 +259,27 @@
       mousePosition.y = e.clientY - rect.top;
     });
     
+    // Add touch event support for mobile
+    section.addEventListener("touchmove", function(e) {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mousePosition.x = e.touches[0].clientX - rect.left;
+        mousePosition.y = e.touches[0].clientY - rect.top;
+      }
+    }, { passive: true });
+    
     section.addEventListener("mouseleave", function() {
       mousePosition.x = null;
       mousePosition.y = null;
     });
+    
+    section.addEventListener("touchend", function() {
+      // モバイルでのタッチ終了時に少し遅延してからマウス位置をクリア
+      setTimeout(() => {
+        mousePosition.x = null;
+        mousePosition.y = null;
+      }, 50);
+    }, { passive: true });
     
     // Handle window resize
     window.addEventListener("resize", function() {
@@ -220,15 +287,20 @@
       canvas.height = section.offsetHeight;
     });
     
+    // Clear existing particles
+    while (particles.length > 0) {
+      particles.pop();
+    }
+    
     // Create particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
+        size: Math.random() * (isMobile ? 2 : 3) + 1, // モバイルではより小さなパーティクル
         color: particleColors[Math.floor(Math.random() * particleColors.length)],
-        speedX: Math.random() * 0.5 - 0.25,
-        speedY: Math.random() * 0.5 - 0.25,
+        speedX: Math.random() * (isMobile ? 0.3 : 0.5) - (isMobile ? 0.15 : 0.25), // モバイルでは動きを遅くする
+        speedY: Math.random() * (isMobile ? 0.3 : 0.5) - (isMobile ? 0.15 : 0.25),
         opacity: Math.random() * 0.5 + 0.25
       });
     }
@@ -258,8 +330,14 @@
         context.globalAlpha = p.opacity;
         context.fill();
         
+        // モバイルの場合は接続計算を間引く（パフォーマンス向上のため）
+        if (isMobile && i % 2 !== 0) continue;
+        
         // Draw connections between nearby particles
         for (let j = i + 1; j < particles.length; j++) {
+          // モバイルの場合はさらに間引く
+          if (isMobile && j % 2 !== 0) continue;
+          
           const p2 = particles[j];
           const distance = Math.sqrt(
             Math.pow(p.x - p2.x, 2) + 
@@ -273,7 +351,7 @@
             context.moveTo(p.x, p.y);
             context.lineTo(p2.x, p2.y);
             context.strokeStyle = p.color;
-            context.globalAlpha = opacity * 0.2;
+            context.globalAlpha = opacity * (isMobile ? 0.1 : 0.2); // モバイルではより透明に
             context.stroke();
           }
         }
@@ -285,13 +363,13 @@
             Math.pow(p.y - mousePosition.y, 2)
           );
           
-          if (mouseDistance < connectionDistance * 1.5) {
-            const opacity = 1 - (mouseDistance / (connectionDistance * 1.5));
+          if (mouseDistance < connectionDistance * (isMobile ? 1.2 : 1.5)) {
+            const opacity = 1 - (mouseDistance / (connectionDistance * (isMobile ? 1.2 : 1.5)));
             context.beginPath();
             context.moveTo(p.x, p.y);
             context.lineTo(mousePosition.x, mousePosition.y);
             context.strokeStyle = p.color;
-            context.globalAlpha = opacity * 0.5;
+            context.globalAlpha = opacity * (isMobile ? 0.3 : 0.5); // モバイルではより透明に
             context.stroke();
           }
         }

@@ -594,6 +594,17 @@ section {
   .skill-category {
     padding: 20px;
   }
+  
+  /* Enhanced profile section responsive */
+  .profile-info {
+    gap: 2.5rem;
+    padding: 0 3rem 3rem;
+  }
+  
+  .profile-skill-categories {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -612,6 +623,59 @@ section {
   .skill-grid {
     gap: 10px 15px;
   }
+  
+  /* Enhanced profile section responsive */
+  .profile-info {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .profile-image {
+    max-width: 250px;
+    margin: 0 auto 2rem;
+  }
+  
+  .profile-header {
+    padding: 2rem;
+  }
+  
+  .profile-name {
+    font-size: 3rem;
+  }
+  
+  .profile-info {
+    padding: 0 2rem 2rem;
+  }
+  
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Enhanced blog section responsive */
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .blog-title {
+    font-size: 1.6rem;
+  }
+  
+  /* Enhanced contact section */
+  .contact-card a {
+    flex-direction: row;
+    text-align: left;
+    padding: 3rem 2rem;
+  }
+  
+  .contact-icon {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -626,6 +690,116 @@ section {
   .skill-grid {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, auto);
+  }
+  
+  /* Enhanced profile section responsive */
+  .profile-content {
+    margin: 0 10px;
+  }
+  
+  .profile-name {
+    font-size: 2.5rem;
+  }
+  
+  .profile-name-en {
+    font-size: 1.4rem;
+  }
+  
+  /* Enhanced blog section responsive */
+  .blog-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+    gap: 1.5rem;
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+  }
+  
+  .blog-title {
+    font-size: 1.6rem;
+  }
+  
+  /* Touch-friendly improvements */
+  .contact-card, .profile-info-item, .certificate-item, .timeline-content, .blog-item {
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-card:active, .profile-info-item:active, .certificate-item:active, .timeline-content:active, .blog-item:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Enhanced extra small device adjustments */
+@media screen and (max-width: 480px) {
+  .profile-detail-sections {
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .profile-detail-section {
+    padding: 1.5rem;
+  }
+  
+  .profile-detail-title {
+    font-size: 1.6rem;
+  }
+  
+  .profile-detail-text p {
+    font-size: 1.3rem;
+  }
+  
+  .timeline {
+    padding-left: 25px;
+  }
+  
+  .timeline-dot {
+    left: -31px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .hero-scroll {
+    bottom: -20px;
+  }
+  
+  .hero-scroll span {
+    font-size: 1.2rem;
+  }
+  
+  .blog-meta span {
+    margin-right: 1rem;
+  }
+}
+
+/* New iPhone SE / Small Screen Adjustments */
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 52%;
+  }
+  
+  .skill-category {
+    padding: 12px;
+  }
+  
+  .profile-info-title {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+  }
+  
+  .info-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+  }
+  
+  .info-text {
+    font-size: 1.2rem;
+  }
+  
+  .contact-icon {
+    width: 45px;
+    height: 45px;
   }
 }
 
@@ -1754,10 +1928,12 @@ section {
     transition: var(--transition);
     z-index: 1000;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 6rem 2rem;
   }
 
   .nav-menu.active {
     right: 0;
+    overflow-y: auto;
   }
 
   .nav-menu li {
@@ -1766,11 +1942,16 @@ section {
 
   .nav-menu a {
     color: var(--primary-color);
+    padding: 0.8rem 0;
+    font-size: 1.6rem;
+    display: block;
   }
 
   .nav-toggle {
     display: block;
     z-index: 1001;
+    margin-left: 1rem;
+    padding: 10px;
   }
 
   .nav-toggle.active span:nth-child(1) {
@@ -1792,6 +1973,18 @@ section {
   .portfolio-grid,
   .blog-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .header-content {
+    padding: 0.5rem 0;
+  }
+  
+  .logo {
+    font-size: 2.8rem;
+  }
+  
+  .nav-toggle span {
+    width: 22px;
   }
 }
 
@@ -1832,6 +2025,170 @@ section {
 
   .blog-content {
     padding: 2rem;
+  }
+  
+  .hero-section {
+    min-height: 600px;
+  }
+  
+  .typewriter-label {
+    font-size: 1.4rem;
+  }
+  
+  .typewriter-text {
+    font-size: 2.4rem;
+    min-height: 5rem;
+  }
+  
+  .typewriter-text::after {
+    height: 4rem;
+  }
+  
+  .skill-infographic {
+    gap: 15px;
+  }
+  
+  .profile-header {
+    padding: 1.5rem;
+  }
+  
+  .profile-name {
+    font-size: 2.2rem;
+  }
+  
+  .profile-info {
+    padding: 0 1.5rem 1.5rem;
+    gap: 2rem;
+  }
+  
+  .profile-info-title {
+    font-size: 1.6rem;
+  }
+  
+  .profile-info-item {
+    padding: 0.8rem;
+  }
+  
+  .info-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .timeline-content h4 {
+    font-size: 1.3rem;
+  }
+  
+  .contact-grid {
+    gap: 1.5rem;
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2.8rem;
+  }
+  
+  .contact-title {
+    font-size: 1.6rem;
+  }
+  
+  a, button, .btn {
+    transition: var(--transition);
+  }
+  
+  a:active, button:active, .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .slide-up.active {
+    animation-duration: 0.6s;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 56%;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+  section {
+    padding: calc(var(--section-spacing) / 3) 0;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .skill-category {
+    padding: 15px;
+  }
+  
+  .skill-category h3 {
+    font-size: 1.6rem;
+  }
+  
+  .skill-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .skill-name {
+    font-size: 1.2rem;
+  }
+  
+  .skill-bar {
+    height: 6px;
+  }
+  
+  .profile-image {
+    max-width: 220px;
+  }
+  
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-skill-categories {
+    grid-template-columns: 1fr;
+  }
+  
+  .certificates-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .blog-grid {
+    gap: 1.2rem;
+  }
+  
+  .blog-title {
+    font-size: 1.4rem;
+  }
+  
+  .blog-meta {
+    font-size: 1.1rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 1.2rem;
+  }
+  
+  .contact-card a {
+    padding: 2rem 1.5rem;
+  }
+  
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 2.2rem;
+  }
+  
+  .logo {
+    font-size: 2.4rem;
   }
 }
 
@@ -1884,4 +2241,167 @@ section {
 .contact-section .container, .blog-section .container {
   position: relative;
   z-index: 2;
+}
+
+/* Particle Canvas Responsive Adjustments */
+@media screen and (max-width: 576px) {
+  #particle-canvas, #profile-particle-canvas, #contact-particle-canvas, #blog-particle-canvas {
+    opacity: 0.7;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  /* タッチデバイスでのみ適用されるスタイル */
+  .btn, 
+  .nav-menu a, 
+  .portfolio-filter a, 
+  .blog-read-more,
+  .contact-card a,
+  .social-icons a {
+    transition: transform 0.2s ease;
+    /* タップ可能領域を拡大 */
+    padding: 0.8rem;
+    margin: -0.4rem;
+  }
+  
+  .btn:active, 
+  .nav-menu a:active, 
+  .portfolio-filter a:active, 
+  .blog-read-more:active,
+  .contact-card:active,
+  .social-icons a:active {
+    transform: scale(0.95);
+  }
+  
+  /* ホバー効果をアクティブ状態に変更 */
+  .skill-category:active,
+  .portfolio-item:active .portfolio-overlay,
+  .blog-item:active {
+    transform: translateY(-5px);
+  }
+  
+  /* スクロールの滑らかさを向上 */
+  .hero-section,
+  .profile-section,
+  .portfolio-section,
+  .blog-section,
+  .contact-section {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* フッターのレスポンシブ調整 */
+@media screen and (max-width: 576px) {
+  .footer-widgets {
+    gap: 2rem;
+  }
+  
+  .widget-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-post-content h5 {
+    font-size: 1.4rem;
+  }
+  
+  .footer-bottom {
+    padding-top: 1.5rem;
+  }
+  
+  .copyright {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer-widgets {
+    gap: 1.5rem;
+  }
+  
+  .footer-posts li {
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-posts img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Touch active state for mobile interaction */
+.touch-active {
+  transform: scale(0.98) !important;
+}
+
+/* Additional responsive optimizations */
+@media (max-width: 480px) {
+  /* Optimize rendering performance */
+  .hero-section,
+  .profile-section,
+  .portfolio-section,
+  .blog-section,
+  .contact-section {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Improve readability of smaller text */
+  .info-text,
+  .timeline-period,
+  .blog-excerpt,
+  .contact-detail,
+  .blog-meta,
+  .copyright {
+    font-size: max(1.2rem, 14px);
+    line-height: 1.5;
+  }
+  
+  /* Ensure minimum tap target size for accessibility */
+  .nav-menu a,
+  .portfolio-filter a,
+  .btn,
+  .social-icons a,
+  .contact-card a {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: more) {
+  :root {
+    --accent-color: #ff0000;
+  }
+  
+  .text-on-dark {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  }
+  
+  .timeline:before {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .skill-level {
+    transition: none !important;
+  }
+  
+  .scroll-arrow {
+    animation: none !important;
+  }
 }
