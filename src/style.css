@@ -659,14 +659,13 @@ section {
 }
 
 .profile-header {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 4rem 2rem;
 }
 
 .profile-name-area {
-  grid-column: 1 / 3;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -688,6 +687,7 @@ section {
 
 .profile-image {
   max-width: 320px;
+  margin-bottom: 2rem;
 }
 
 .profile-image img {
@@ -705,6 +705,19 @@ section {
 }
 
 .profile-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 左右の幅割合 */
+  gap: 3rem;
+  padding: 0 4rem 4rem;
+}
+
+.profile-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.profile-info-right {
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -1019,28 +1032,14 @@ section {
 }
 
 @media (max-width: 992px) {
-  .profile-header {
+  .profile-info {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .profile-name-area {
-    grid-column: 1;
+    gap: 4rem;
   }
   
   .profile-image {
     max-width: 250px;
-    margin: 0 auto;
-  }
-  
-  .profile-skill-categories,
-  .profile-detail-sections {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .profile-seminars {
-    padding: 2rem;
+    margin: 0 auto 2rem;
   }
 }
 
@@ -1053,16 +1052,16 @@ section {
     font-size: 3rem;
   }
   
+  .profile-info {
+    padding: 0 2rem 2rem;
+  }
+  
   .profile-info-grid {
     grid-template-columns: 1fr;
   }
   
   .certificates-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .profile-detail-sections {
-    padding: 2rem;
   }
 }
 
